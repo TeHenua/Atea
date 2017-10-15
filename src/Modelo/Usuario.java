@@ -14,15 +14,15 @@ public class Usuario {
     private String colegio;
     private String ocupacion;
     private String diagnostico;
-    private String grado_discapacidad;
-    private String grado_dependencia;
-    private String puntos_movilidad;
+    private String gradoDiscapacidad;
+    private String gradoDependencia;
+    private String puntosMovilidad;
     private String demanda;
-    private String num_ss;
+    private String numSs;
     private String tis;
-    private String primera_entrevista;
-    private String alerta_custodia;
-    private String alerta_medica;
+    private String primeraEntrevista;
+    private String alertaCustodia;
+    private String alertaMedica;
     private String nombreSocio;
     private String estado;
 }
