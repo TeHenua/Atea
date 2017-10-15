@@ -22,4 +22,5 @@ public class Socio {
     private String ocupacion;
     private String estado;
 
+    private Usuario usuario;
 }

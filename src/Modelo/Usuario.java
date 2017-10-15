@@ -1,15 +1,17 @@
 package Modelo;
 
+import java.util.Date;
+
 public class Usuario {
     private int id;
     private String nombre;
     private String dni;
     private String apellido1;
     private String apellido2;
-    private String fecha_nac;
+    private Date fechaNacimiento;
     private String direccion;
     private String localidad;
-    private String codigoPos;
+    private int codigoPos;
     private String provincia;
     private String colegio;
     private String ocupacion;
@@ -25,4 +27,8 @@ public class Usuario {
     private String alertaMedica;
     private String nombreSocio;
     private String estado;
+
+    private Socio socio;
+    private User user;
+    private Grupo grupo;
 }
