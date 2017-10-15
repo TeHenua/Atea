@@ -1,6 +1,7 @@
 package Modelo;
 
 public class Usuario {
+    private int id;
     private String nombre;
     private String dni;
     private String apellido1;
@@ -8,7 +9,7 @@ public class Usuario {
     private String fecha_nac;
     private String direccion;
     private String localidad;
-    private String codigo_pos;
+    private String codigoPos;
     private String provincia;
     private String colegio;
     private String ocupacion;
@@ -20,7 +21,6 @@ public class Usuario {
     private String num_ss;
     private String tis;
     private String primera_entrevista;
-    private int socio_id;
     private String alerta_custodia;
     private String alerta_medica;
     private String nombreSocio;
