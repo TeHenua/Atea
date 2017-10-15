@@ -15,5 +15,6 @@ public class Contacto {
     private String email;
     private String tipoComunicacion;
     private String parentesco;
-    private String nombreUsuario;
+
+    private Usuario usuario;
 }
