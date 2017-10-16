@@ -9,7 +9,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/Socio.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/Login.fxml"));
         primaryStage.setTitle("aTEA - Iniciar sesión");
         primaryStage.setScene(new Scene(root, 545, 400));
         primaryStage.show();
