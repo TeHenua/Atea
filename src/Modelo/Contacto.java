@@ -1,6 +1,7 @@
 package Modelo;
 
 public class Contacto {
+
     private String dni;
     private String nombre;
     private String apellido1;

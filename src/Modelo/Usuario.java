@@ -1,8 +1,9 @@
 package Modelo;
-
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Usuario {
+
     private int id;
     private String nombre;
     private String dni;
@@ -28,7 +29,8 @@ public class Usuario {
     private String nombreSocio;
     private String estado;
 
-    private Socio socio;
-    private User user;
+    private ArrayList<Socio> socios;
     private Grupo grupo;
+    private ArrayList<Consulta> consultas;
+    private ArrayList<Contacto> contactos;
 }

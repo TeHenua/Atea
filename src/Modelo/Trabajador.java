@@ -15,6 +15,5 @@ public class Trabajador {
     private int movil;
     private String email;
 
-    private user user;
-
+    private User user;
 }
