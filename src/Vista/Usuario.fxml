@@ -13,7 +13,7 @@
       <TextField fx:id="tfApellido1" layoutX="203.0" layoutY="43.0" promptText="Primer Apellido" />
       <TextField fx:id="tfApellido2" layoutX="382.0" layoutY="43.0" promptText="Segundo Apellido" />
       <TextField fx:id="tfDni" layoutX="21.0" layoutY="87.0" prefHeight="26.0" prefWidth="113.0" promptText="NIF/NIE" />
-      <TextField fx:id="tfDni1" layoutX="148.0" layoutY="87.0" prefHeight="26.0" prefWidth="113.0" promptText="Numero Socio" />
+      <TextField fx:id="tfSocio" layoutX="148.0" layoutY="87.0" prefHeight="26.0" prefWidth="113.0" promptText="Numero Socio" />
       <ComboBox fx:id="cbSocio" layoutX="276.0" layoutY="87.0" prefHeight="26.0" prefWidth="135.0" promptText="Socio/Tutor" />
       <TextField fx:id="tfFechaNac" layoutX="422.0" layoutY="87.0" prefHeight="26.0" prefWidth="150.0" promptText="Fecha AAAA-MM-DD" />
       <TextField fx:id="tfLugarNac" layoutX="581.0" layoutY="87.0" prefHeight="26.0" prefWidth="135.0" promptText="Lugar Nacimiento" />
@@ -22,7 +22,7 @@
       <TextField fx:id="tfLocalidad" layoutX="227.0" layoutY="185.0" prefHeight="26.0" prefWidth="184.0" promptText="Localidad" />
       <TextField fx:id="tfCp" layoutX="422.0" layoutY="185.0" prefHeight="26.0" prefWidth="91.0" promptText="C.P." />
       <TextField fx:id="tfProvincia" layoutX="532.0" layoutY="185.0" prefHeight="26.0" prefWidth="184.0" promptText="Provincia" />
-      <Button fx:id="btGuardar" layoutX="675.0" layoutY="536.0" mnemonicParsing="false" text="Guardar" />
+      <Button fx:id="btGuardar" layoutX="675.0" layoutY="536.0" mnemonicParsing="false" onAction="#gardar" text="Guardar" />
       <Button fx:id="btLimpiar" layoutX="71.0" layoutY="536.0" mnemonicParsing="false" text="Limpiar" />
 
 
