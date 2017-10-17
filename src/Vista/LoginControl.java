@@ -1,13 +1,15 @@
 package Vista;
 
 import javafx.event.ActionEvent;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 
 public class LoginControl{
 
     public TextField tfUsuario;
-    public TextField tfContrasena;
+    public PasswordField tfContrasena;
+
 
     public void logear(ActionEvent actionEvent) {
 
