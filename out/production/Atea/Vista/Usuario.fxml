@@ -22,7 +22,7 @@
       <TextField fx:id="tfLocalidad" layoutX="227.0" layoutY="185.0" prefHeight="26.0" prefWidth="184.0" promptText="Localidad" />
       <TextField fx:id="tfCp" layoutX="422.0" layoutY="185.0" prefHeight="26.0" prefWidth="91.0" promptText="C.P." />
       <TextField fx:id="tfProvincia" layoutX="532.0" layoutY="185.0" prefHeight="26.0" prefWidth="184.0" promptText="Provincia" />
-      <Button fx:id="btGuardar" layoutX="675.0" layoutY="536.0" mnemonicParsing="false" onAction="#gardar" text="Guardar" />
+      <Button fx:id="btGuardar" layoutX="675.0" layoutY="536.0" mnemonicParsing="false" onAction="#guardar" text="Guardar" />
       <Button fx:id="btLimpiar" layoutX="71.0" layoutY="536.0" mnemonicParsing="false" text="Limpiar" />
 
 

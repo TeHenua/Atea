@@ -28,7 +28,7 @@
       <TextField fx:id="tfMovil" layoutX="146.0" layoutY="295.0" prefHeight="26.0" prefWidth="113.0" promptText="Telefono Movil" />
       <TextField fx:id="tfEmail" layoutX="274.0" layoutY="295.0" prefHeight="26.0" prefWidth="113.0" promptText="Email" />
       <ComboBox fx:id="cbContacto" layoutX="403.0" layoutY="294.0" prefHeight="26.0" prefWidth="158.0" promptText="Tipo de Contacto" />
-      <Button layoutX="491.0" layoutY="351.0" mnemonicParsing="false" onAction="#gardar" text="Guardar" />
+      <Button layoutX="491.0" layoutY="351.0" mnemonicParsing="false" onAction="#guardar" text="Guardar" />
       <Button layoutX="37.0" layoutY="351.0" mnemonicParsing="false" text="Limpiar" />
    </children>
 </AnchorPane>

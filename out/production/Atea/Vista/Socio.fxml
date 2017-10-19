@@ -30,7 +30,7 @@
       <TextField fx:id="tfEmail" layoutX="414.0" layoutY="394.0" promptText="Email" />
       <ComboBox fx:id="cbTipoContacto" layoutX="599.0" layoutY="394.0" prefWidth="150.0" promptText="Tipo Contacto" />
       <Label layoutX="52.0" layoutY="487.0" text="Archivos" />
-      <Button layoutX="643.0" layoutY="620.0" mnemonicParsing="false" onAction="#gardar" text="Guardar" />
+      <Button layoutX="643.0" layoutY="620.0" mnemonicParsing="false" onAction="#guardar" text="Guardar" />
       <Button layoutX="76.0" layoutY="620.0" mnemonicParsing="false" text="Limpiar" />
    </children>
 </AnchorPane>
