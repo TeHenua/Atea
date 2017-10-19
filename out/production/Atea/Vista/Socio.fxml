@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.SocioControl">
    <children>
-      <TextField fx:id="tfNumero" layoutX="51.0" layoutY="49.0" promptText="Numero socio" />
+      <TextField fx:id="tfNumero" layoutX="51.0" layoutY="49.0" promptText="Numero Socio" />
       <TextField fx:id="tfDni" layoutX="233.0" layoutY="49.0" promptText="NIF/NIE" />
       <ComboBox fx:id="cbTipoSocio" layoutX="414.0" layoutY="49.0" prefWidth="150.0" promptText="Tipo Socio" />
       <TextField fx:id="tfNombre" layoutX="51.0" layoutY="90.0" promptText="Nombre" />
