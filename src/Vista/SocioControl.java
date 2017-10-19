@@ -1,14 +1,20 @@
 package Vista;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
-public class SocioControl {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class SocioControl implements Initializable{
     
     public TextField tfNumero;
     public TextField tfDni;
-    public ComboBox cbTipoSocio;
     public TextField tfNombre;
     public TextField tfApellido1;
     public TextField tfApellido2;
@@ -24,6 +30,7 @@ public class SocioControl {
     public TextField tfMovil;
     public TextField tfEmail;
     public ComboBox cbTipoContacto;
+
 
     public void gardar(ActionEvent actionEvent) {
 
@@ -45,6 +52,17 @@ public class SocioControl {
         String movil = tfMovil.textProperty().get();
         String email = tfEmail.textProperty().get();
         //tengo que averiguar como obtener el valor de un combobox y ponerlo aqui para tipocontacto
+
+    }
+
+    @FXML
+    public ComboBox<String> cbTipoSocio;
+
+    ObservableList<String> list = FXCollections.observableArrayList("Tipo Socio1", "Tipo Socio2","Tipo Socio3", "Tipo Socio4");
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        cbTipoSocio.setItems(list);
 
     }
 }
