@@ -2,6 +2,7 @@ package Modelo;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Socio {
 
@@ -24,8 +25,9 @@ public class Socio {
     private String numCuenta;
     private String ocupacion;
     private String estado;
+
     //relaciones
-    private Usuario usuario;
+    private ArrayList<Usuario> usuarios;
 
     public boolean guardarSocio(){//aqui se guarda el socio en la base de datos IMPORTANTE QUITAR ID AUTOINCREMENTAL
         ControladorBaseDatos.conectar();
@@ -61,6 +63,62 @@ public class Socio {
             return false;
         }
 
+    }
+
+    public boolean modificarSocio(){
+        ControladorBaseDatos.conectar();
+        try {
+            PreparedStatement ps = ControladorBaseDatos.getConexion().prepareStatement(
+                    "UPDATE SOCIOS SET NOMBRE=?,APELLIDO1=?,APELLIDO2=?,NUM_SOCIO=?,DNI=?,FECHA_NAC=?,LUGAR_NAC=?," +
+                            "DIRECCION=?,LOCALIDAD=?,PROVINCIA=?,COD_POSTAL=?,FIJO=?,MOVIL=?,EMAIL=?,TIPO_COMUNICACION=?," +
+                            "OCUPACION=?,TIPO_SOCIO=?,NUM_CUENTA=? WHERE ID=?");
+            ps.setString(1,nombre);
+            ps.setString(2,apellido1);
+            ps.setString(3,apellido2);
+            ps.setInt(4,numSocio);
+            ps.setString(5,dni);
+            ps.setDate(6,fechaNac);
+            ps.setString(7,lugarNac);
+            ps.setString(8,direccion);
+            ps.setString(9,localidad);
+            ps.setString(10,provincia);
+            ps.setInt(11,codigoPos);
+            ps.setInt(12,fjio);
+            ps.setInt(13,movil);
+            ps.setString(14,email);
+            ps.setString(15,convertirTipoContacto(tipoComunicacion));
+            ps.setString(16,ocupacion);
+            ps.setString(17,tipoSocio);
+            ps.setString(18,numCuenta);
+            //ejecutamos la sentencia
+            ps.executeUpdate();
+            //cerramos la conexion
+            ControladorBaseDatos.desconectar();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean borrarSocio(){
+        try {
+            ControladorBaseDatos.conectar();
+            PreparedStatement ps = null;
+            ps = ControladorBaseDatos.getConexion().prepareStatement("DELETE FROM SOCIOS WHERE ID=?");
+            ps.execute();
+            ControladorBaseDatos.desconectar();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+    //TODO listar Usuarios desde la bbdd o añadirlos a la clase??
+
+    public void añadirUsuario(Usuario usuario){
+        usuarios.add(usuario);
     }
 
     private String convertirTipoContacto(TipoContacto tipoContacto){
@@ -255,4 +313,6 @@ public class Socio {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+
 }
