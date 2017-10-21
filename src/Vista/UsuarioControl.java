@@ -6,26 +6,34 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class UsuarioControl implements Initializable{
 
+    @FXML
     public TextField tfNombre;
     public TextField tfApellido1;
     public TextField tfApellido2;
     public TextField tfDni;
     public TextField tfSocio;
-    public TextField tfFechaNac;
     public TextField tfLugarNac;
     public TextField tfDireccion;
     public TextField tfLocalidad;
     public TextField tfCp;
     public TextField tfProvincia;
-    @FXML
     public ComboBox<String> cbSocio;
+    public DatePicker dpFechaNac;
+    public TextField tfColegio;
+    public TextField tfOcupacion;
+    public TextField tfSegSocial;
+    public TextField tfTis;
+    public DatePicker tfEntrevista;
 
     ObservableList<String> lista = FXCollections.observableArrayList("Fulanito", "Menganito","Zutanito");
 
@@ -42,7 +50,8 @@ public class UsuarioControl implements Initializable{
         String dni = tfDni.getText();
         String socio = tfSocio.getText();
         String tipoSocio = cbSocio.getValue();
-        String naceu = tfFechaNac.getText();
+        LocalDate naceu = dpFechaNac.getValue();
+        java.sql.Date fechaNac = Date.valueOf(naceu);
         String lugar = tfLugarNac.getText();
         String direccion = tfDireccion.getText();
         String localidad = tfLocalidad.getText();
