@@ -1,11 +1,12 @@
 package Modelo;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Socio {
-
+    private int id;
     private int numSocio;
     private String tipoSocio;
     private String dni;
@@ -134,10 +135,36 @@ public class Socio {
         }
     }
 
-    public Socio() {
-
+    public static ArrayList<Socio> todosLosSocios(){
+        ArrayList<Socio> socios = new ArrayList<>();
+        try {
+            ControladorBaseDatos.conectar();
+            PreparedStatement ps = ControladorBaseDatos.getConexion().prepareStatement("SELECT ID,NOMBRE,APELLIDO1," +
+                    "APELLIDO FROM SOCIOS");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                Socio socio = new Socio(rs.getInt("ID"),rs.getString("NOMBRE"),
+                        rs.getString("APELLIDO1"),rs.getString("APELLIDO2"));
+                socios.add(socio);
+            }
+            ControladorBaseDatos.desconectar();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return socios;
     }
-    //CONSTRUCTOOOOOR LLENNOOOOOO
+
+    public Socio(int id, String nombre, String apellido1, String apellido2) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido1 = apellido1;
+        this.apellido2 = apellido2;
+    }
+
+    public Socio(int id) {
+        this.id = id;
+    }
+
     public Socio(int numSocio, String tipoSocio, String dni, String nombre, String apellido1, String apellido2,
                  java.sql.Date fechaNac, String lugarNac, String direccion, String localidad, int codigoPos, String provincia,
                  int fjio, int movil, String email, TipoContacto tipoComunicacion, String numCuenta, String ocupacion){
