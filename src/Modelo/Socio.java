@@ -143,7 +143,7 @@ public class Socio {
         try {
             ControladorBaseDatos.conectar();
             PreparedStatement ps = ControladorBaseDatos.getConexion().prepareStatement("SELECT ID,NOMBRE,APELLIDO1," +
-                    "APELLIDO FROM SOCIOS");
+                    "APELLIDO2 FROM SOCIOS");
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
                 Socio socio = new Socio(rs.getInt("ID"),rs.getString("NOMBRE"),
@@ -162,6 +162,9 @@ public class Socio {
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
+    }
+
+    public Socio() {
     }
 
     public Socio(int id) {
@@ -344,5 +347,11 @@ public class Socio {
         this.estado = estado;
     }
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 }

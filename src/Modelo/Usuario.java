@@ -38,14 +38,14 @@ public class Usuario {
     private ArrayList<Consulta> consultas;
     private ArrayList<Contacto> contactos;
 
-    public boolean guardarUsuario(){//aqui se guarda el usuario en la base de datos IMPORTANTE QUITAR ID AUTOINCREMENTAL
+    public boolean guardarUsuario(int socioId){//aqui se guarda el usuario en la base de datos IMPORTANTE QUITAR ID AUTOINCREMENTAL
         ControladorBaseDatos.conectar();
-        try {//TODO FALTA EL SOCIO ID
+        try {//TODO FALTA VER QUE HACEMOS CON EL ESTADO DE MOMENTO LE ENVIAMOS UN 1 A MACHETE A LA BBDD
             PreparedStatement ps = ControladorBaseDatos.getConexion().prepareStatement("INSERT INTO USUARIOS(" +
                     "ID,NOMBRE,APELLIDO1,APELLIDO2,NUM_SOCIO,FECHA_NAC,LUGAR_NAC,DIRECCION,LOCALIDAD,PROVINCIA,CODIGO_POS," +
                     "COLEGIO,OCUPACION,DIAGNOSTICO,GRADO_DISCAPACIDAD,GRADO_DEPENDENCIA,PUNTOS_MOVILIDAD,NUM_SS,TIS," +
-                    "PRIMERA_ENTREVISTA,ALERTA_CUSTODIA,ALERTA_MEDICA)" +
-                    " VALUES((SELECT NVL(MAX(ID),0)+1 FROM USUARIOS),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?");
+                    "PRIMERA_ENTREVISTA,ALERTA_CUSTODIA,ALERTA_MEDICA,ESTADO)" +
+                    " VALUES((SELECT (NVL(MAX(ID),0)+1) FROM USUARIOS),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,1)");
             ps.setString(1,nombre);
             ps.setString(2,apellido1);
             ps.setString(3,apellido2);
