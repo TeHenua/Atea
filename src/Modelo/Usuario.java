@@ -39,9 +39,7 @@ public class Usuario {
     private ArrayList<Contacto> contactos;
 
     public boolean guardarUsuario(){//aqui se guarda el usuario en la base de datos IMPORTANTE QUITAR ID AUTOINCREMENTAL
-
         ControladorBaseDatos.conectar();
-
         try {//TODO FALTA EL SOCIO ID
             PreparedStatement ps = ControladorBaseDatos.getConexion().prepareStatement("INSERT INTO USUARIOS(" +
                     "ID,NOMBRE,APELLIDO1,APELLIDO2,NUM_SOCIO,FECHA_NAC,LUGAR_NAC,DIRECCION,LOCALIDAD,PROVINCIA,CODIGO_POS," +
@@ -69,7 +67,9 @@ public class Usuario {
             ps.setDate(19,primeraEntrevista);
             ps.setString(20,convertirAlertas(alertaCustodia));
             ps.setString(21,convertirAlertas(alertaMedica));
+            //ejecutamos la sentencia
             ps.execute();
+            //cerramos la conexion
             ControladorBaseDatos.desconectar();
             return true;
         } catch (SQLException e) {
@@ -78,7 +78,76 @@ public class Usuario {
         }
     }
 
-    //TODO update y borrar
+    //TODO revisar update y borrar
+    public boolean modificarUsuario(){
+        ControladorBaseDatos.conectar();
+        try{
+            PreparedStatement ps = ControladorBaseDatos.getConexion().prepareStatement(
+                "UPDATE USUARIOS SET NOMBRE=? ,APELLIDO1=? ,APELLIDO2=? ,NUM_SOCIO=? ,FECHA_NAC=? ,LUGAR_NAC=? ,DIRECCION=?"+
+                    "LOCALIDAD=? ,PROVINCIA=? ,CODIGO_POS=? ,COLEGIO=? ,OCUPACION=? ,DIAGNOSTICO=? ,GRADO_DISCAPACIDAD=?"+
+                    "GRADO_DEPENDENCIA=? ,PUNTOS_MOVILIDAD=? ,NUM_SS=? ,TIS=? ,PRIMERA_ENTREVISTA=? ,ALERTA_CUSTODIA=? ,ALERTA_MEDICA=?");
+            ps.setString(1,nombre);
+            ps.setString(2,apellido1);
+            ps.setString(3,apellido2);
+            ps.setInt(4,numSocio);
+            ps.setDate(5,fechaNac);
+            ps.setString(6,lugarNac);
+            ps.setString(7,direccion);
+            ps.setString(8,localidad);
+            ps.setString(9,provincia);
+            ps.setInt(10,codigoPos);
+            ps.setString(11,colegio);
+            ps.setString(12,ocupacion);
+            ps.setString(13, diagnostico);
+            ps.setString(14,gradoDiscapacidad);
+            ps.setString(15,gradoDependencia);
+            ps.setString(16,puntosMovilidad);
+            ps.setString(17,numSs);
+            ps.setInt(18,tis);
+            ps.setDate(19,primeraEntrevista);
+            ps.setString(20,convertirAlertas(alertaCustodia));
+            ps.setString(21,convertirAlertas(alertaMedica));
+            //ejecutamos la sentencia
+            ps.execute();
+            //cerramos la conexion
+            ControladorBaseDatos.desconectar();
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean borrarUsuario(){
+        try{
+            ControladorBaseDatos.conectar();
+            PreparedStatement ps = null;
+            ps = ControladorBaseDatos.getConexion().prepareStatement("DELETE FROM USUARIOS WHERE ID=?");
+            //ejecutamos la sentencia
+            ps.execute();
+            //cerramos la conexion
+            ControladorBaseDatos.desconectar();
+            return true;
+        } catch (SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    //TODO PASAR ESTA FUNCION A CLASS UTILIDADDES
+    private String convertirTipoContacto(TipoContacto tipoContacto){
+        switch (tipoContacto){
+            case Carta:
+                return "Carta";
+            case Email:
+                return "Email";
+            case Carta_sin_remite:
+                return "Carta sin remite";
+            default:
+                return "Error";
+        }
+    }
 
     public static ArrayList<Usuario> todosLosUsuarios(){
         ArrayList<Usuario> usuarios = new ArrayList<>();
@@ -97,19 +166,6 @@ public class Usuario {
             e.printStackTrace();
         }
         return usuarios;
-    }
-
-    private String convertirTipoContacto(TipoContacto tipoContacto){
-        switch (tipoContacto){
-            case Carta:
-                return "Carta";
-            case Email:
-                return "Email";
-            case Carta_sin_remite:
-                return "Carta sin remite";
-            default:
-                return "Error";
-        }
     }
 
     private String convertirAlertas(boolean alerta){
