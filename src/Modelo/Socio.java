@@ -71,8 +71,8 @@ public class Socio {
         try {
             PreparedStatement ps = ControladorBaseDatos.getConexion().prepareStatement(
                     "UPDATE SOCIOS SET NOMBRE=?,APELLIDO1=?,APELLIDO2=?,NUM_SOCIO=?,DNI=?,FECHA_NAC=?,LUGAR_NAC=?," +
-                            "DIRECCION=?,LOCALIDAD=?,PROVINCIA=?,COD_POSTAL=?,FIJO=?,MOVIL=?,EMAIL=?,TIPO_COMUNICACION=?," +
-                            "OCUPACION=?,TIPO_SOCIO=?,NUM_CUENTA=? WHERE ID=?");
+                        "DIRECCION=?,LOCALIDAD=?,PROVINCIA=?,COD_POSTAL=?,FIJO=?,MOVIL=?,EMAIL=?,TIPO_COMUNICACION=?," +
+                        "OCUPACION=?,TIPO_SOCIO=?,NUM_CUENTA=? WHERE ID=?");
             ps.setString(1,nombre);
             ps.setString(2,apellido1);
             ps.setString(3,apellido2);
@@ -107,7 +107,9 @@ public class Socio {
             ControladorBaseDatos.conectar();
             PreparedStatement ps = null;
             ps = ControladorBaseDatos.getConexion().prepareStatement("DELETE FROM SOCIOS WHERE ID=?");
+            //ejecutamos la sentencia
             ps.execute();
+            //cerramos la conexion
             ControladorBaseDatos.desconectar();
             return true;
         } catch (SQLException e) {
@@ -122,6 +124,7 @@ public class Socio {
         usuarios.add(usuario);
     }
 
+    //TODO PASAR ESTA FUNCION A CLASS UTILIDADES
     private String convertirTipoContacto(TipoContacto tipoContacto){
         switch (tipoContacto){
             case Carta:

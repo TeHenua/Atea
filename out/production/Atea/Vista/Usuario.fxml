@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.UsuarioControl">
+<AnchorPane prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.UsuarioControl">
    <children>
       <Label layoutX="14.0" layoutY="14.0" text="Datos Personales" />
       <TextField fx:id="tfNombre" layoutX="21.0" layoutY="43.0" promptText="Nombre" />
@@ -18,13 +18,18 @@
       <ComboBox fx:id="cbSocio" layoutX="276.0" layoutY="87.0" prefHeight="26.0" prefWidth="135.0" promptText="Socio/Tutor" />
       <DatePicker fx:id="dpFechaNac" layoutX="422.0" layoutY="88.0" prefHeight="25.0" prefWidth="150.0" promptText="Fecha Nacimiento" />
       <TextField fx:id="tfLugarNac" layoutX="581.0" layoutY="87.0" prefHeight="26.0" prefWidth="135.0" promptText="Lugar Nacimiento" />
-      <Label layoutX="21.0" layoutY="155.0" text="Domicilio" />
-      <TextField fx:id="tfDireccion" layoutX="26.0" layoutY="185.0" prefHeight="26.0" prefWidth="184.0" promptText="Direccion" />
-      <TextField fx:id="tfLocalidad" layoutX="227.0" layoutY="185.0" prefHeight="26.0" prefWidth="184.0" promptText="Localidad" />
-      <TextField fx:id="tfCp" layoutX="422.0" layoutY="185.0" prefHeight="26.0" prefWidth="91.0" promptText="C.P." />
-      <TextField fx:id="tfProvincia" layoutX="532.0" layoutY="185.0" prefHeight="26.0" prefWidth="184.0" promptText="Provincia" />
-      <Button fx:id="btGuardar" layoutX="667.0" layoutY="426.0" mnemonicParsing="false" onAction="#guardar" text="Guardar" />
-      <Button fx:id="btLimpiar" layoutX="71.0" layoutY="536.0" mnemonicParsing="false" text="Limpiar" />
+      <TextField fx:id="tfColegio" layoutX="21.0" layoutY="129.0" prefHeight="26.0" prefWidth="173.0" promptText="Colegio" />
+      <TextField fx:id="tfOcupacion" layoutX="210.0" layoutY="129.0" prefHeight="26.0" prefWidth="135.0" promptText="Ocupacion" />
+      <TextField fx:id="tfSegSocial" layoutX="362.0" layoutY="129.0" prefHeight="26.0" prefWidth="135.0" promptText="Nº Seguridad Social" />
+      <TextField fx:id="tfTis" layoutX="514.0" layoutY="129.0" prefHeight="26.0" prefWidth="135.0" promptText="TIS" />
+      <DatePicker fx:id="tfEntrevista" layoutX="18.0" layoutY="169.0" promptText="Primera Entravista" />
+      <Label layoutX="21.0" layoutY="240.0" text="Domicilio" />
+      <TextField fx:id="tfDireccion" layoutX="26.0" layoutY="280.0" prefHeight="26.0" prefWidth="184.0" promptText="Direccion" />
+      <TextField fx:id="tfLocalidad" layoutX="227.0" layoutY="280.0" prefHeight="26.0" prefWidth="184.0" promptText="Localidad" />
+      <TextField fx:id="tfCp" layoutX="422.0" layoutY="280.0" prefHeight="26.0" prefWidth="91.0" promptText="C.P." />
+      <TextField fx:id="tfProvincia" layoutX="532.0" layoutY="280.0" prefHeight="26.0" prefWidth="184.0" promptText="Provincia" />
+      <Button fx:id="btGuardar" layoutX="667.0" layoutY="360.0" mnemonicParsing="false" onAction="#guardar" text="Guardar" />
+      <Button fx:id="btLimpiar" layoutX="71.0" layoutY="360.0" mnemonicParsing="false" text="Limpiar" />
 
 
 
