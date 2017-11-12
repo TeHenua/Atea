@@ -38,7 +38,10 @@ public class Usuario {
     private ArrayList<Consulta> consultas;
     private ArrayList<Contacto> contactos;
 
-    public boolean guardarUsuario(){//aqui se guarda el usuario en la base de datos IMPORTANTE QUITAR ID AUTOINCREMENTAL
+    //********************************************************************************//
+    //aqui se guarda el socio en la base de datos IMPORTANTE QUITAR ID AUTOINCREMENTAL//
+    //********************************************************************************//
+    public boolean guardarUsuario(){
         ControladorBaseDatos.conectar();
         try {//TODO FALTA EL SOCIO ID
             PreparedStatement ps = ControladorBaseDatos.getConexion().prepareStatement("INSERT INTO USUARIOS(" +
@@ -78,7 +81,6 @@ public class Usuario {
         }
     }
 
-    //TODO revisar update y borrar
     public boolean modificarUsuario(){
         ControladorBaseDatos.conectar();
         try{
@@ -124,6 +126,7 @@ public class Usuario {
             ControladorBaseDatos.conectar();
             PreparedStatement ps = null;
             ps = ControladorBaseDatos.getConexion().prepareStatement("DELETE FROM USUARIOS WHERE ID=?");
+            ps.setInt(1,id);
             //ejecutamos la sentencia
             ps.execute();
             //cerramos la conexion
@@ -135,26 +138,13 @@ public class Usuario {
         }
     }
 
-    //TODO PASAR ESTA FUNCION A CLASS UTILIDADDES
-    private String convertirTipoContacto(TipoContacto tipoContacto){
-        switch (tipoContacto){
-            case Carta:
-                return "Carta";
-            case Email:
-                return "Email";
-            case Carta_sin_remite:
-                return "Carta sin remite";
-            default:
-                return "Error";
-        }
-    }
-
+    //para listar todos los usuarios
     public static ArrayList<Usuario> todosLosUsuarios(){
         ArrayList<Usuario> usuarios = new ArrayList<>();
         try {
             ControladorBaseDatos.conectar();
             PreparedStatement ps = ControladorBaseDatos.getConexion().prepareStatement("SELECT ID,NOMBRE,APELLIDO1," +
-                    "APELLIDO FROM USUARIOS");
+                    "APELLIDO2 FROM USUARIOS");
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
                 Usuario usuario = new Usuario(rs.getInt("ID"),rs.getString("NOMBRE"),
@@ -176,29 +166,15 @@ public class Usuario {
         }
     }
 
-    public void añadirSocio(Socio socio){
-        socios.add(socio);
-        socio.añadirUsuario(this);
-    }
+    //***************************************//
+    //              CONSTRUCTORES           //
+    //*************************************//
 
-    public void añadirConsulta(Consulta consulta){
-        consultas.add(consulta);
-    }
-
-    public void añadirContacto(Contacto contacto){
-        contactos.add(contacto);
-    }
-
+    //aqui el constructor vacio
     public Usuario() {
     }
 
-    public Usuario(int id, String nombre, String apellido1, String apellido2) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido1 = apellido1;
-        this.apellido2 = apellido2;
-    }
-
+    //aqui el constructor con todos los campos obligatorios
     public Usuario(String nombre, String dni, String apellido1, String apellido2, Integer numSocio, Date fechaNac,
                    String lugarNac, String direccion, String localidad, int codigoPos, String provincia, String colegio,
                    String ocupacion, String diagnostico, String gradoDiscapacidad, String gradoDependencia,
@@ -228,6 +204,41 @@ public class Usuario {
         this.alertaCustodia = alertaCustodia;
         this.alertaMedica = alertaMedica;
     }
+
+    public Usuario(int id, String nombre, String apellido1, String apellido2) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido1 = apellido1;
+        this.apellido2 = apellido2;
+    }
+
+    //***************************************//
+    //        FIN DE CONSTRUCTORES           //
+    //***************************************//
+
+    //Añadir objetos al array para la relacion
+    public void añadirSocio(Socio socio){
+        socios.add(socio);
+        socio.añadirUsuario(this);
+    }
+
+    //Añadir objetos al array para la relacion
+    public void añadirConsulta(Consulta consulta){
+        consultas.add(consulta);
+    }
+
+    //Añadir objetos al array para la relacion
+    public void añadirContacto(Contacto contacto){
+        contactos.add(contacto);
+    }
+
+    //********************************************************//
+    //AQUI LAS PUERTAS DE ENTRADA Y SALIDA CON GETTER Y SETTER//
+    //********************************************************//
+
+    public int getId() {return id;}
+
+    public void setId(int id) {this.id = id;}
 
     public String getNombre() {
         return nombre;
@@ -428,4 +439,10 @@ public class Usuario {
     public void setGrupo(Grupo grupo) {
         this.grupo = grupo;
     }
+
+    public ArrayList<Socio> getSocios() { return socios; }
+
+    public ArrayList<Consulta> getConsultas() { return consultas; }
+
+    public ArrayList<Contacto> getContactos() { return contactos; }
 }
