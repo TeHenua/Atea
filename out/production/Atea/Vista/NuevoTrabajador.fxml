@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.TrabajadorControl">
+   <children>
+      <TextField fx:id="tfNombre" layoutX="54.0" layoutY="57.0" promptText="Nombre" />
+      <TextField fx:id="tfApe1" layoutX="226.0" layoutY="57.0" promptText="Primer apellido" />
+      <TextField fx:id="tfApe2" layoutX="398.0" layoutY="57.0" promptText="Segundo apellido" />
+      <TextField fx:id="tfDni" layoutX="54.0" layoutY="109.0" promptText="DNI" />
+      <DatePicker fx:id="dpFecha" layoutX="214.0" layoutY="109.0" promptText="Fecha de nacimiento" />
+      <TextField fx:id="tfLugar" layoutX="398.0" layoutY="109.0" promptText="Lugar de nacimiento" />
+      <TextField fx:id="tfDireccion" layoutX="54.0" layoutY="175.0" prefHeight="25.0" prefWidth="330.0" promptText="Dirección" />
+      <TextField fx:id="tfLocalidad" layoutX="398.0" layoutY="175.0" promptText="Localidad" />
+      <TextField fx:id="tfProvincia" layoutX="54.0" layoutY="229.0" promptText="Provincia" />
+      <TextField fx:id="tfCp" layoutX="235.0" layoutY="229.0" prefHeight="25.0" prefWidth="99.0" promptText="CP" />
+      <TextField fx:id="tfFijo" layoutX="54.0" layoutY="276.0" promptText="Fijo" />
+      <TextField fx:id="tfMovil" layoutX="226.0" layoutY="276.0" promptText="Móvil" />
+      <TextField fx:id="tfEmail" layoutX="54.0" layoutY="328.0" promptText="Email" />
+      <PasswordField fx:id="tfContraseña" layoutX="235.0" layoutY="328.0" promptText="Contraseña" />
+      <Button fx:id="btGuardar" layoutX="473.0" layoutY="328.0" mnemonicParsing="false" text="Guardar" />
+
+   </children>
+</AnchorPane>
