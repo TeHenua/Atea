@@ -1,17 +1,22 @@
+package Vista;
 
+import Modelo.User;
+import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class Main {
+import java.io.IOException;
 
+public class ControladorPrincipal extends Application{
+
+    private Stage stagePrincipal;
+    private AnchorPane panelPrincipal;
 
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/Login.fxml"));
-        primaryStage.setTitle("aTEA - Iniciar sesión");
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
+        this.stagePrincipal = primaryStage;
+        mostrarVentanaLogin();
 
 
         /*User u = new User("tehenua@gmail.com","pusverlus", Rol.ADMINISTRADOR);
@@ -33,5 +38,42 @@ public class Main {
 
 
     }
+    public void mostrarVentanaContraseña(User user){
+        FXMLLoader loader = new FXMLLoader(ControladorPrincipal.class.getResource("RecuperarPassw.fxml"));
+        try {
+          panelPrincipal = (AnchorPane) loader.load();
+            stagePrincipal.setTitle("Recuperar contraseña");
+//            stagePrincipal.initOwner(stagePrincipal);
+            Scene scene = new Scene(panelPrincipal);
+            stagePrincipal.setScene(scene);
+            RecuperarPasswControlador control = loader.getController();
+            control.setProgramaPrincipal(this);
+            control.setTfEmail(user.getEmail());
+            control.setUser(user);
+            stagePrincipal.show();
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void mostrarVentanaLogin() {
+        FXMLLoader loader = new FXMLLoader(ControladorPrincipal.class.getResource("Login.fxml"));
+        try {
+            panelPrincipal = (AnchorPane)loader.load();
+            Scene scene = new Scene(panelPrincipal);
+            stagePrincipal.setTitle("Login");
+            stagePrincipal.setScene(scene);
+            LoginControl control = loader.getController();
+            control.setProgramaPrincipal(this);
+            stagePrincipal.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void main (String[] args){
+        launch(args);
+    }
 }

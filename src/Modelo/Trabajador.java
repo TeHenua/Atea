@@ -1,5 +1,9 @@
 package Modelo;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 public class Trabajador {
 
     private String dni;
@@ -10,15 +14,60 @@ public class Trabajador {
     private String lugarNac;
     private String direccion;
     private String localidad;
+    private String provincia;
     private int codigoPos;
+    //TODO cambiar todos codigos postales a string porque la bbdd flipa
     private int fijo;
     private int movil;
-    private String email;
 
     //relaciones
     private User user;
 
-    //***************************************//
+
+    public boolean guardarTrabajador() {
+        ControladorBaseDatos.conectar();
+        Connection con = ControladorBaseDatos.getConexion();
+        try {
+            PreparedStatement psu = ControladorBaseDatos.getConexion().prepareStatement(
+                    "INSERT INTO USUARIOS_APP VALUES(?,?,ORA_HASH(?))");
+            psu.setString(1,user.getEmail());
+            psu.setString(2,user.getRol().toString());
+            psu.setString(3,user.getPassword());
+            psu.execute();
+
+            PreparedStatement ps = ControladorBaseDatos.getConexion().prepareStatement(
+                    "INSERT INTO TRABAJADORES VALUES((SELECT NVL(MAX(ID),0)+1 FROM TRABAJADORES),?,?,?,?,?,?,?,?,?,?,?)");
+            ps.setString(1, nombre);
+            ps.setString(2, apellido1);
+            ps.setString(3, apellido2);
+            ps.setString(4, dni);
+            ps.setString(5, direccion);
+            ps.setString(6, localidad);
+            ps.setInt(7, codigoPos);
+            ps.setString(8, provincia);
+            ps.setInt(9, fijo);
+            ps.setInt(10, movil);
+            ps.setString(11,user.getEmail());
+            //TODO fecha y lugar de nacimiento
+            //ejecutamos la sentencia
+            ps.execute();
+            //cerramos la conexion
+            ControladorBaseDatos.desconectar();
+            return true;
+        } catch (SQLException e) {
+            try {
+                con.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+            e.printStackTrace();
+
+            return false;
+        }
+
+    }
+
+        //***************************************//
     //              CONSTRUCTORES           //
     //*************************************//
 
@@ -28,7 +77,7 @@ public class Trabajador {
 
     //aqui el constructor con todos los campos obligatorios//
     public Trabajador(String dni, String nombre, String apellido1, String apellido2, String fechaNac, String lugarNac,
-                      String direccion, String localidad, int codigoPos, int fijo, int movil, String email, User user) {
+                      String direccion, String localidad, int codigoPos, int fijo, int movil, User user) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido1 = apellido1;
@@ -40,7 +89,6 @@ public class Trabajador {
         this.codigoPos = codigoPos;
         this.fijo = fijo;
         this.movil = movil;
-        this.email = email;
         this.user = user;
     }
 
@@ -140,19 +188,19 @@ public class Trabajador {
         this.movil = movil;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getProvincia() {
+        return provincia;
+    }
+
+    public void setProvincia(String provincia) {
+        this.provincia = provincia;
     }
 }

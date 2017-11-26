@@ -64,7 +64,7 @@ public class UsuarioControl implements Initializable{
 
     //
 
-    public void ventanaNuevoa() throws IOException {
+    public void ventanaNueva() throws IOException {
 
     }
 

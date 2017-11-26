@@ -1,6 +1,6 @@
 package Modelo;
 
-public enum rol {
+public enum Rol {
 
     ADMINISTRATIVO,PSICOLOGO,TRABAJADOR_SOCIAL,ADMINISTRADOR
 
