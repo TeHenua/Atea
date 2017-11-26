@@ -30,7 +30,10 @@ public class Socio {
     //relaciones
     private ArrayList<Usuario> usuarios;
 
-    public boolean guardarSocio(){//aqui se guarda el socio en la base de datos IMPORTANTE QUITAR ID AUTOINCREMENTAL
+      //********************************************************************************//
+     //aqui se guarda el socio en la base de datos IMPORTANTE QUITAR ID AUTOINCREMENTAL//
+    //********************************************************************************//
+    public boolean guardarSocio(){
         ControladorBaseDatos.conectar();
         try {
             PreparedStatement ps = ControladorBaseDatos.getConexion().prepareStatement(
@@ -49,7 +52,7 @@ public class Socio {
             ps.setInt(12,fjio);
             ps.setInt(13,movil);
             ps.setString(14,email);
-            ps.setString(15,convertirTipoContacto(tipoComunicacion));
+            ps.setString(15,Utilidades.convertirTipoContacto(tipoComunicacion));
             ps.setString(16,ocupacion);
             ps.setString(17,tipoSocio);
             ps.setString(18,numCuenta);
@@ -87,7 +90,7 @@ public class Socio {
             ps.setInt(12,fjio);
             ps.setInt(13,movil);
             ps.setString(14,email);
-            ps.setString(15,convertirTipoContacto(tipoComunicacion));
+            ps.setString(15,Utilidades.convertirTipoContacto(tipoComunicacion));
             ps.setString(16,ocupacion);
             ps.setString(17,tipoSocio);
             ps.setString(18,numCuenta);
@@ -107,6 +110,7 @@ public class Socio {
             ControladorBaseDatos.conectar();
             PreparedStatement ps = null;
             ps = ControladorBaseDatos.getConexion().prepareStatement("DELETE FROM SOCIOS WHERE ID=?");
+            ps.setInt(1,id);
             //ejecutamos la sentencia
             ps.execute();
             //cerramos la conexion
@@ -122,20 +126,6 @@ public class Socio {
 
     public void añadirUsuario(Usuario usuario){
         usuarios.add(usuario);
-    }
-
-    //TODO PASAR ESTA FUNCION A CLASS UTILIDADES
-    private String convertirTipoContacto(TipoContacto tipoContacto){
-        switch (tipoContacto){
-            case Carta:
-                return "Carta";
-            case Email:
-                return "Email";
-            case Carta_sin_remite:
-                return "Carta sin remite";
-            default:
-                return "Error";
-        }
     }
 
     public static ArrayList<Socio> todosLosSocios(){
@@ -157,20 +147,15 @@ public class Socio {
         return socios;
     }
 
-    public Socio(int id, String nombre, String apellido1, String apellido2) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido1 = apellido1;
-        this.apellido2 = apellido2;
-    }
+    //***************************************//
+    //              CONSTRUCTORES           //
+    //*************************************//
 
+    //aqui el constructo vacio//
     public Socio() {
     }
 
-    public Socio(int id) {
-        this.id = id;
-    }
-
+    //aqui el constructor con todos los campos obligatorios//
     public Socio(int numSocio, String tipoSocio, String dni, String nombre, String apellido1, String apellido2,
                  java.sql.Date fechaNac, String lugarNac, String direccion, String localidad, int codigoPos, String provincia,
                  int fjio, int movil, String email, TipoContacto tipoComunicacion, String numCuenta, String ocupacion){
@@ -194,6 +179,25 @@ public class Socio {
         this.numCuenta = numCuenta;
         this.ocupacion = ocupacion;
     }
+
+    public Socio(int id, String nombre, String apellido1, String apellido2) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido1 = apellido1;
+        this.apellido2 = apellido2;
+    }
+
+
+    public Socio(int id) {
+        this.id = id;
+    }
+    //***************************************//
+    //        FIN DE CONSTRUCTORES           //
+    //***************************************//
+
+    //********************************************************//
+    //AQUI LAS PUERTAS DE ENTRADA Y SALIDA CON GETTER Y SETTER//
+    //********************************************************//
 
     public int getNumSocio() {
         return numSocio;

@@ -24,6 +24,7 @@
       <TextField fx:id="tfSegSocial" layoutX="362.0" layoutY="129.0" prefHeight="26.0" prefWidth="135.0" promptText="Nº Seguridad Social" />
       <TextField fx:id="tfTis" layoutX="514.0" layoutY="129.0" prefHeight="26.0" prefWidth="135.0" promptText="TIS" />
       <DatePicker fx:id="tfEntrevista" layoutX="18.0" layoutY="169.0" promptText="Primera Entravista" />
+      <TextField fx:id="tfDemanda" layoutX="21.0" layoutY="208.0" promptText="Demanda" />
       <Label layoutX="21.0" layoutY="240.0" text="Domicilio" />
       <TextField fx:id="tfDireccion" layoutX="26.0" layoutY="280.0" prefHeight="26.0" prefWidth="184.0" promptText="Direccion" />
       <TextField fx:id="tfLocalidad" layoutX="227.0" layoutY="280.0" prefHeight="26.0" prefWidth="184.0" promptText="Localidad" />
@@ -35,7 +36,6 @@
       <TextField fx:id="tfGradoDis" layoutX="202.0" layoutY="321.0" promptText="gradodiscapacidad" />
       <TextField fx:id="tfGradoDep" layoutX="365.0" layoutY="321.0" promptText="gradodependencia" />
       <TextField fx:id="tfPuntosMovilidad" layoutX="532.0" layoutY="321.0" promptText="puntosmovilidad" />
-      <TextField fx:id="tfDemanda" layoutX="21.0" layoutY="208.0" promptText="demanda" />
       <CheckBox fx:id="ckMedica" layoutX="261.0" layoutY="212.0" mnemonicParsing="false" text="Alerta medica" />
       <CheckBox fx:id="ckCustodia" layoutX="420.0" layoutY="212.0" mnemonicParsing="false" text="Alerta custodia" />
 
