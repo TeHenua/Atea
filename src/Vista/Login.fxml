@@ -4,18 +4,19 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.LoginControl">
+<AnchorPane prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.LoginControl">
    <children>
-      <JFXTextField fx:id="tfUsuario" layoutX="204.0" layoutY="200.0" promptText="Email" />
-      <JFXPasswordField fx:id="tfContrasena" layoutX="204.0" layoutY="256.0" promptText="Contraseña" />
-      <JFXButton layoutX="446.0" layoutY="326.0" mnemonicParsing="false" onAction="#logear" text="Entrar" />
-      <JFXButton layoutX="133.0" layoutY="326.0" mnemonicParsing="false" onAction="#recuperar" text="Enviar" />
-      <Label layoutX="119.0" layoutY="295.0" text="He olvidado mi contraseña" />
+      <JFXTextField fx:id="tfUsuario" labelFloat="true" layoutX="73.0" layoutY="51.0" promptText="Email" />
+      <JFXPasswordField fx:id="tfContrasena" labelFloat="true" layoutX="73.0" layoutY="150.0" promptText="Contraseña" />
+      <JFXButton layoutX="185.0" layoutY="250.0" mnemonicParsing="false" onAction="#logear" style="-fx-border-color: lightgray;" text="Entrar" />
+      <JFXButton layoutX="205.0" layoutY="353.0" mnemonicParsing="false" onAction="#recuperar" style="-fx-border-color: lightgray;" text="Cambiar" />
+      <Label layoutX="22.0" layoutY="358.0" text="He olvidado mi contraseña" />
+      <JFXButton fx:id="closeButton" layoutX="42.0" layoutY="250.0" onAction="#closeButtonAction" style="-fx-border-color: lightgray;" text="Salir" />
    </children>
 </AnchorPane>
