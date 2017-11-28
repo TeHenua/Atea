@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.LoginControl">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.LoginControl">
    <children>
-      <TextField fx:id="tfUsuario" layoutX="204.0" layoutY="200.0" promptText="Email" />
-      <PasswordField fx:id="tfContrasena" layoutX="204.0" layoutY="256.0" promptText="Contraseña" />
-      <Button layoutX="446.0" layoutY="326.0" mnemonicParsing="false" onAction="#logear" text="Entrar" />
-      <Button layoutX="133.0" layoutY="326.0" mnemonicParsing="false" text="Enviar"  onAction="#recuperar"/>
+      <JFXTextField fx:id="tfUsuario" layoutX="204.0" layoutY="200.0" promptText="Email" />
+      <JFXPasswordField fx:id="tfContrasena" layoutX="204.0" layoutY="256.0" promptText="Contraseña" />
+      <JFXButton layoutX="446.0" layoutY="326.0" mnemonicParsing="false" onAction="#logear" text="Entrar" />
+      <JFXButton layoutX="133.0" layoutY="326.0" mnemonicParsing="false" onAction="#recuperar" text="Enviar" />
       <Label layoutX="119.0" layoutY="295.0" text="He olvidado mi contraseña" />
    </children>
 </AnchorPane>
