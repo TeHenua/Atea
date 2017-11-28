@@ -50,7 +50,7 @@ public class LoginControl implements Initializable{
         correcto =  u.recuperarPassw(tfUsuario.getText());
         Correo c = null;
         try {
-            ArrayList<String> a =  new ArrayList<>(){{add(u.getEmail());}};
+            ArrayList<String> a =  new ArrayList<String>(){{add(u.getEmail());}};
             c = new Correo("Recuperación de contraseña",("Tu código de verificación es: "+u.getCodigo()),a);
         } catch (EmailException e) {
             correcto = false;
