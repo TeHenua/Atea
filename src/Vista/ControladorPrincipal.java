@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -13,6 +14,7 @@ public class ControladorPrincipal extends Application{
 
     private Stage stagePrincipal;
     private AnchorPane panelPrincipal;
+
 
     public void start(Stage primaryStage) throws Exception{
         this.stagePrincipal = primaryStage;
@@ -65,8 +67,26 @@ public class ControladorPrincipal extends Application{
             Scene scene = new Scene(panelPrincipal);
             stagePrincipal.setTitle("Login");
             stagePrincipal.setScene(scene);
+            stagePrincipal.initStyle(StageStyle.UNIFIED);
             LoginControl control = loader.getController();
             control.setProgramaPrincipal(this);
+            stagePrincipal.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void mostrarVentanaHome() {
+        FXMLLoader loader = new FXMLLoader(ControladorPrincipal.class.getResource("Home.fxml"));
+        try {
+            panelPrincipal = (AnchorPane)loader.load();
+            Scene scene = new Scene(panelPrincipal);
+            stagePrincipal.setTitle("Inicio");
+            stagePrincipal.setScene(scene);
+            //stagePrincipal.initStyle(StageStyle.UNIFIED);
+            HomeControl control = loader.getController();
+            control.setControladorPrincipal(this);
             stagePrincipal.show();
 
         } catch (IOException e) {

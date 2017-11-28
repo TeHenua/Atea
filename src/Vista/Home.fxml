@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.HomeControl">
+   <children>
+      <MenuBar layoutX="7.0" layoutY="8.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Usuarios">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#ventanaNuevoUsu" text="Nuevo" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Socios">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#ventanaNuevoSoc" text="Nuevo" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Contactos">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#ventanaNuevoCon" text="Nuevo" />
+            </items>
+          </Menu>
+        </menus>
+         <contextMenu>
+            <ContextMenu>
+              <items>
+                <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
+      </MenuBar>
+      <AnchorPane fx:id="miscojones" layoutX="80.0" layoutY="73.0" prefHeight="200.0" prefWidth="362.0" />
+   </children>
+</AnchorPane>

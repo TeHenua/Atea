@@ -1,7 +1,6 @@
 package Vista;
 
 import Modelo.Correo;
-import Modelo.Rol;
 import Modelo.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -24,9 +23,9 @@ public class LoginControl implements Initializable{
 
         String nome = tfUsuario.textProperty().get();//obtengo el valor del textfield al pulsar el boton
         String contrasinal = tfContrasena.textProperty().get();
+        controladorPrincipal.mostrarVentanaHome();
+/*        Rol rol = new User(nome,contrasinal).login();
 
-        Rol rol = new User(nome,contrasinal).login();
-        System.out.println("Estas LOegao");
         switch (rol){
             case ADMINISTRADOR:
 
@@ -40,7 +39,7 @@ public class LoginControl implements Initializable{
             case TRABAJADOR_SOCIAL:
 
                 break;
-        }
+        }*/
 
     }
 
