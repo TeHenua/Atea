@@ -1,14 +1,19 @@
 package Vista;
 
 import Modelo.User;
+import com.calendarfx.model.Calendar;
+import com.calendarfx.model.CalendarSource;
+import com.calendarfx.view.CalendarView;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.time.LocalTime;
 
 public class ControladorPrincipal extends Application{
 
@@ -93,6 +98,21 @@ public class ControladorPrincipal extends Application{
             e.printStackTrace();
         }
     }
+
+    public void mostrarVentanaCalendario() {
+        CalendarView calendarView = new CalendarView();
+        Calendar calendar = new Calendar();
+        CalendarSource calendarSource = new CalendarSource("Calendarios");
+        calendarSource.getCalendars().addAll(calendar);
+        calendarView.getCalendarSources().setAll(calendarSource);
+        calendarView.setRequestedTime(LocalTime.now());
+        StackPane stackPane = new StackPane();
+        stackPane.getChildren().addAll(calendarView);
+        Scene scene = new Scene(stackPane);
+        stagePrincipal.setScene(scene);
+        stagePrincipal.show();
+    }
+
     public static void main (String[] args){
         launch(args);
     }

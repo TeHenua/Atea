@@ -78,5 +78,8 @@ public class LoginControl implements Initializable{
     public void setProgramaPrincipal(ControladorPrincipal programaPrincipal) {
         this.controladorPrincipal = programaPrincipal;
     }
+
+    public void closeButtonAction(ActionEvent actionEvent) {
+    }
 }
 
