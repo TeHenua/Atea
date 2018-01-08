@@ -5,3 +5,5 @@
 Atea\.iml
 
 lib/jfoenix-1\.10\.0\.jar
+
+out/production/Atea/*
